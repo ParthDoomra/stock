@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StockSense • Web Scraper</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      background-color: #0b0f14;
+      color: #e7edf5;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: #0e141d;
+      border-bottom: 1px solid #1b2636;
+    }
+
+    .nav-title {
+      font-weight: 700;
+      font-size: 20px;
+      color: #37a0d6;
+    }
+
+    .nav-right button {
+      background: transparent;
+      border: 1px solid #37a0d6;
+      color: #37a0d6;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: 0.3s;
+    }
+    .nav-right button:hover {
+      background: #37a0d6;
+      color: #0b0f14;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: #101821;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      color: #37d67a;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #1b2636;
+      background: #0e141d;
+      color: #e7edf5;
+      font-size: 16px;
+    }
+
+    button.scrape-btn {
+      background: #37d67a;
+      color: #0b0f14;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button.scrape-btn:hover {
+      background: #2dbd6e;
+      box-shadow: 0 0 10px #37d67a;
+    }
+
+    .error-msg {
+      margin-top: 12px;
+      color: #ff6b6b;
+    }
+
+    /* Stock grid */
+    .stock-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 16px;
+    }
+
+    .stock-card {
+      background: #0f151f;
+      border: 1px solid #1b2636;
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      color: #e7edf5;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .stock-card:hover {
+      transform: translateY(-5px);
+      border-color: #37d67a;
+      box-shadow: 0 0 15px rgba(55,214,122,0.3);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #0e141d;
+      padding: 24px;
+      border-radius: 12px;
+      max-width: 800px;
+      width: 90%;
+      position: relative;
+      color: #e7edf5;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 300px !important;
+      margin-top: 20px;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      color: #a2b0c3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav-bar">
+    <span class="nav-title">StockSense • Web Scraper</span>
+    <div class="nav-right">
+      <button onclick="toggleTheme()">Toggle Theme</button>
+      <button onclick="window.location.href='home.html'">Home</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Scrape Real-time Stock Data</h2>
+    <div class="input-group">
+      <input type="text" id="stockInput" placeholder="Enter stock symbol (e.g., AAPL)">
+      <button class="scrape-btn" onclick="scrapeData()">Scrape Data</button>
+    </div>
+    <div id="errorMsg" class="error-msg"></div>
+
+    <!-- Stock grid below -->
+    <div class="stock-grid" id="stockGrid">
+      <div class="stock-card" data-symbol="AAPL">AAPL</div>
+      <div class="stock-card" data-symbol="MSFT">MSFT</div>
+      <div class="stock-card" data-symbol="GOOGL">GOOGL</div>
+      <div class="stock-card" data-symbol="TSLA">TSLA</div>
+      <div class="stock-card" data-symbol="AMZN">AMZN</div>
+      <div class="stock-card" data-symbol="META">META</div>
+      <div class="stock-card" data-symbol="NFLX">NFLX</div>
+      <div class="stock-card" data-symbol="NVDA">NVDA</div>
+    </div>
+  </div>
+
+  <!-- Modal for stock details -->
+  <div class="modal" id="stockModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle">Stock Info</h2>
+      <div class="stat-row">
+        <span>Symbol: <b id="modalSymbol">—</b></span>
+        <span>Price: <b id="modalPrice">—</b></span>
+      </div>
+      <canvas id="modalChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    let darkMode = true;
+
+    function toggleTheme() {
+      darkMode = !darkMode;
+      document.body.style.backgroundColor = darkMode ? "#0b0f14" : "#f2f4f8";
+      document.body.style.color = darkMode ? "#e7edf5" : "#0b0f14";
+    }
+
+    async function scrapeData(symbol) {
+      const input = document.getElementById("stockInput").value.trim() || symbol;
+      const msg = document.getElementById("errorMsg");
+      msg.textContent = "";
+
+      if (!input) {
+        msg.textContent = "⚠ Please enter a stock symbol.";
+        return;
+      }
+
+      try {
+        const res = await fetch(`http://127.0.0.1:8000/scrape/${input}`);
+        const data = await res.json();
+
+        if (!data || data.error) throw new Error(data.error || "API Error");
+
+        showModal(data);
+      } catch (err) {
+        msg.textContent = "❌ Failed to fetch data. Check your backend or symbol.";
+      }
+    }
+
+    function showModal(data) {
+      const modal = document.getElementById("stockModal");
+      const ctx = document.getElementById("modalChart").getContext("2d");
+      modal.style.display = "flex";
+
+      document.getElementById("modalTitle").textContent = data.name || "Stock Info";
+      document.getElementById("modalSymbol").textContent = data.symbol || "—";
+      document.getElementById("modalPrice").textContent = `$${data.price || "—"}`;
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: data.dates || Array.from({ length: 10 }, (_, i) => `Day ${i+1}`),
+          datasets: [{
+            label: data.symbol,
+            data: data.prices || Array.from({ length: 10 }, () => Math.random() * 100),
+            borderColor: "#37d67a",
+            backgroundColor: "rgba(55,214,122,0.2)",
+            tension: 0.4,
+            fill: true,
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { labels: { color: "#e7edf5" } } },
+          scales: {
+            x: { ticks: { color: "#a2b0c3" } },
+            y: { ticks: { color: "#a2b0c3" } }
+          }
+        }
+      });
+    }
+
+    function closeModal() {
+      document.getElementById("stockModal").style.display = "none";
+    }
+
+    // Click events for stock cards
+    document.querySelectorAll(".stock-card").forEach(card => {
+      card.addEventListener("click", () => scrapeData(card.dataset.symbol));
+    });
+  </script>
+
+</body>
+</html>

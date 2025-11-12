@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockSense - Smart Stock Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="home-page">
+    <nav class="nav-bar">
+        <div class="nav-brand">
+            <img src="logo.svg" alt="StockSense Logo" class="nav-logo">
+            <span class="nav-title">StockSense</span>
+        </div>
+        <div class="nav-links">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#popular-stocks" class="nav-link">Popular Stocks</a>
+            <a href="login.html" class="nav-link login-btn">Login</a>
+            <a href="login.html?signup=true" class="nav-link signup-btn">Sign Up</a>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to StockSense</h1>
+            <h2>Your Smart Stock Analysis Platform</h2>
+            <p>Make informed investment decisions with real-time data analysis and interactive visualizations</p>
+            <div class="hero-buttons">
+                <a href="login.html?signup=true" class="cta-button">Get Started</a>
+                <a href="#features" class="secondary-button">Learn More</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <h2>Why Choose StockSense?</h2>
+            <p class="section-subtitle">Powerful features to enhance your trading experience</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Advanced Analysis</h3>
+                <p>Get fast, actionable market insights and clear trend signals to support your decisions</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Real-time market analysis</li>
+                    <li><i class="fas fa-check"></i> Trend identification</li>
+                    <li><i class="fas fa-check"></i> Risk assessment</li>
+                </ul>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Smart Portfolio Management</h3>
+                <p>Advanced portfolio optimization and risk management tools</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Portfolio diversification</li>
+                    <li><i class="fas fa-check"></i> Risk optimization</li>
+                    <li><i class="fas fa-check"></i> Performance tracking</li>
+                </ul>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <h3>Interactive Dashboard</h3>
+                <p>Customizable interface with powerful visualization tools</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Real-time charts</li>
+                    <li><i class="fas fa-check"></i> Technical indicators</li>
+                    <li><i class="fas fa-check"></i> Custom workspaces</li>
+                </ul>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h3>Smart Alerts</h3>
+                <p>Never miss a trading opportunity with customizable alerts</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Price alerts</li>
+                    <li><i class="fas fa-check"></i> Technical indicators</li>
+                    <li><i class="fas fa-check"></i> News notifications</li>
+                </ul>
+            </div>
+        </div>
+        <div class="features-cta">
+            <a href="login.html?signup=true" class="cta-button">Start Trading Now</a>
+            <p class="cta-subtitle">Join thousands of successful traders</p>
+        </div>
+    </section>
+
+    <section id="popular-stocks" class="stocks-section">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Trending Markets</h2>
+            <p class="section-subtitle">Stay updated with the most active stocks in the market</p>
+        </div>
+        <div class="stocks-grid">
+            <div class="stock-card modern" data-aos="fade-up">
+                <div class="stock-header">
+                    <img src="https://logo.clearbit.com/apple.com" alt="Apple Inc." class="stock-logo">
+                    <div class="stock-badge trending">Trending</div>
+                </div>
+                <div class="stock-info">
+                    <div class="stock-main">
+                        <h3>Apple (AAPL)</h3>
+                        <p class="stock-price">$175.45 <span class="price-change positive">+2.3%</span></p>
+                    </div>
+                    <div class="stock-stats">
+                        <div class="stat">
+                            <span class="label">Volume</span>
+                            <span class="value">82.5M</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Market Cap</span>
+                            <span class="value">2.8T</span>
+                        </div>
+                    </div>
+                    <div class="stock-chart">
+                        <canvas class="mini-chart" data-stock="AAPL"></canvas>
+                    </div>
+                    <button class="track-button">
+                        <i class="fas fa-plus"></i> Add to Watchlist
+                    </button>
+                </div>
+            </div>
+            <div class="stock-card modern" data-aos="fade-up" data-aos-delay="100">
+                <div class="stock-header">
+                    <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" class="stock-logo">
+                    <div class="stock-badge hot">Hot</div>
+                </div>
+                <div class="stock-info">
+                    <div class="stock-main">
+                        <h3>Microsoft (MSFT)</h3>
+                        <p class="stock-price">$328.79 <span class="price-change positive">+1.8%</span></p>
+                    </div>
+                    <div class="stock-stats">
+                        <div class="stat">
+                            <span class="label">Volume</span>
+                            <span class="value">65.2M</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Market Cap</span>
+                            <span class="value">2.5T</span>
+                        </div>
+                    </div>
+                    <div class="stock-chart">
+                        <canvas class="mini-chart" data-stock="MSFT"></canvas>
+                    </div>
+                    <button class="track-button">
+                        <i class="fas fa-plus"></i> Add to Watchlist
+                    </button>
+                </div>
+            </div>
+            <div class="stock-card modern" data-aos="fade-up" data-aos-delay="200">
+                <div class="stock-header">
+                    <img src="https://logo.clearbit.com/google.com" alt="Alphabet" class="stock-logo">
+                    <div class="stock-badge leader">Market Leader</div>
+                </div>
+                <div class="stock-info">
+                    <div class="stock-main">
+                        <h3>Alphabet (GOOGL)</h3>
+                        <p class="stock-price">$134.23 <span class="price-change negative">-0.5%</span></p>
+                    </div>
+                    <div class="stock-stats">
+                        <div class="stat">
+                            <span class="label">Volume</span>
+                            <span class="value">45.8M</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Market Cap</span>
+                            <span class="value">1.7T</span>
+                        </div>
+                    </div>
+                    <div class="stock-chart">
+                        <canvas class="mini-chart" data-stock="GOOGL"></canvas>
+                    </div>
+                    <button class="track-button">
+                        <i class="fas fa-plus"></i> Add to Watchlist
+                    </button>
+                </div>
+            </div>
+            <div class="stock-card modern" data-aos="fade-up" data-aos-delay="300">
+                <div class="stock-header">
+                    <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" class="stock-logo">
+                    <div class="stock-badge growth">Growth Pick</div>
+                </div>
+                <div class="stock-info">
+                    <div class="stock-main">
+                        <h3>Amazon (AMZN)</h3>
+                        <p class="stock-price">$142.59 <span class="price-change positive">+1.2%</span></p>
+                    </div>
+                    <div class="stock-stats">
+                        <div class="stat">
+                            <span class="label">Volume</span>
+                            <span class="value">55.3M</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Market Cap</span>
+                            <span class="value">1.5T</span>
+                        </div>
+                    </div>
+                    <div class="stock-chart">
+                        <canvas class="mini-chart" data-stock="AMZN"></canvas>
+                    </div>
+                    <button class="track-button">
+                        <i class="fas fa-plus"></i> Add to Watchlist
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="view-more-container" data-aos="fade-up">
+            <a href="login.html?signup=true" class="view-more-button">
+                View More Stocks <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About section removed per request -->
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>StockSense</h3>
+                <p>Your trusted partner in stock market analysis</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#features">Features</a>
+                <a href="#popular-stocks">Popular Stocks</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@stocksense.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StockSense. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation for stock cards
+        const stockCards = document.querySelectorAll('.stock-card');
+        stockCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add scroll animation for features
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        });
+
+        document.querySelectorAll('.feature-card').forEach((card) => {
+            observer.observe(card);
+        });
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true
+        });
+
+        // Initialize mini charts
+        const miniCharts = document.querySelectorAll('.mini-chart');
+        miniCharts.forEach(canvas => {
+            const ctx = canvas.getContext('2d');
+            const stock = canvas.dataset.stock;
+            
+            // Generate some random data
+            const data = Array.from({length: 20}, () => Math.random() * 100);
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: 20}, (_, i) => ''),
+                    datasets: [{
+                        data: data,
+                        borderColor: stock === 'GOOGL' ? '#ef4444' : '#4a90e2',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        fill: true,
+                        backgroundColor: (context) => {
+                            const ctx = context.chart.ctx;
+                            const gradient = ctx.createLinearGradient(0, 0, 0, 60);
+                            gradient.addColorStop(0, stock === 'GOOGL' ? 'rgba(239, 68, 68, 0.2)' : 'rgba(74, 144, 226, 0.2)');
+                            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                            return gradient;
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

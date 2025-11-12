@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockSense - Smart Stock Analysis</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* ✅ Custom glowing effect for the "Current Stocks" button */
+        .secondary-button {
+            border: 2px solid #37d67a;
+            color: #37d67a;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+        .secondary-button:hover {
+            background: #37d67a;
+            color: #0b0f14;
+            box-shadow: 0 0 18px #37d67a;
+            transform: scale(1.05);
+        }
+        /* Optional soft animation pulse */
+        .secondary-button {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0px rgba(55,214,122,0.2); }
+            50% { box-shadow: 0 0 15px rgba(55,214,122,0.4); }
+            100% { box-shadow: 0 0 0px rgba(55,214,122,0.2); }
+        }
+    </style>
+</head>
+
+<body class="home-page">
+
+    <!-- ✅ NAVIGATION BAR -->
+    <nav class="nav-bar">
+        <div class="nav-brand">
+            <img src="logo.svg" alt="StockSense Logo" class="nav-logo">
+            <span class="nav-title">StockSense</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#popular-stocks" class="nav-link">Popular Stocks</a>
+
+            <!-- ✅ Login & Signup (Fixed) -->
+            <a href="login.html" class="nav-link login-btn">Login</a>
+            <a href="signup.html" class="nav-link signup-btn">Sign Up</a>
+        </div>
+    </nav>
+
+    <!-- ✅ HERO SECTION -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to StockSense</h1>
+            <h2>Your Smart Stock Analysis Platform</h2>
+            <p>Make informed investment decisions with real-time data analysis and interactive visualizations</p>
+
+            <div class="hero-buttons">
+                <a href="signup.html" class="cta-button">Get Started</a>
+                <!-- ✅ Replaced Learn More with Current Stocks -->
+                <a href="scrape.html" class="secondary-button">Current Stocks</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ✅ FEATURES SECTION -->
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <h2>Why Choose StockSense?</h2>
+            <p class="section-subtitle">Powerful features to enhance your trading experience</p>
+        </div>
+
+        <div class="features-grid">
+
+            <div class="feature-card" data-aos="fade-up">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Advanced Analysis</h3>
+                <p>Get fast, actionable market insights and clear trend signals to support your decisions</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Real-time market analysis</li>
+                    <li><i class="fas fa-check"></i> Trend identification</li>
+                    <li><i class="fas fa-check"></i> Risk assessment</li>
+                </ul>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                <h3>Smart Portfolio Management</h3>
+                <p>Advanced portfolio optimization and risk management tools</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Portfolio diversification</li>
+                    <li><i class="fas fa-check"></i> Risk optimization</li>
+                    <li><i class="fas fa-check"></i> Performance tracking</li>
+                </ul>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon"><i class="fas fa-desktop"></i></div>
+                <h3>Interactive Dashboard</h3>
+                <p>Customizable interface with powerful visualization tools</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Real-time charts</li>
+                    <li><i class="fas fa-check"></i> Technical indicators</li>
+                    <li><i class="fas fa-check"></i> Custom workspaces</li>
+                </ul>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                <h3>Smart Alerts</h3>
+                <p>Never miss a trading opportunity with customizable alerts</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Price alerts</li>
+                    <li><i class="fas fa-check"></i> Technical indicators</li>
+                    <li><i class="fas fa-check"></i> News notifications</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="features-cta">
+            <a href="signup.html" class="cta-button">Start Trading Now</a>
+            <p class="cta-subtitle">Join thousands of successful traders</p>
+        </div>
+    </section>
+
+    <!-- ✅ POPULAR STOCKS SECTION -->
+    <section id="popular-stocks" class="stocks-section">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Trending Markets</h2>
+            <p class="section-subtitle">Stay updated with the most active stocks in the market</p>
+        </div>
+
+        <div class="stocks-grid">
+            <!-- Existing stock cards -->
+        </div>
+
+        <div class="view-more-container" data-aos="fade-up">
+            <a href="signup.html" class="view-more-button">
+                View More Stocks <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ✅ FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>StockSense</h3>
+                <p>Your trusted partner in stock market analysis</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#features">Features</a>
+                <a href="#popular-stocks">Popular Stocks</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@stocksense.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a><i class="fab fa-twitter"></i></a>
+                    <a><i class="fab fa-linkedin"></i></a>
+                    <a><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 StockSense. All rights reserved.</p>
+        </div>
+    </footer>
+
+<!-- ✅ PAGE SCRIPTS -->
+<script>
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Hover animation
+    document.querySelectorAll('.stock-card').forEach(card => {
+        card.addEventListener('mouseenter', () => card.style.transform = 'translateY(-10px)');
+        card.addEventListener('mouseleave', () => card.style.transform = 'translateY(0)');
+    });
+
+    // AOS animations
+    AOS.init({ duration: 800, easing: 'ease-out', once: true });
+
+    // Mini stock charts
+    document.querySelectorAll('.mini-chart').forEach(canvas => {
+        const ctx = canvas.getContext('2d');
+        const stock = canvas.dataset.stock;
+        const data = Array.from({ length: 20 }, () => Math.random() * 100);
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({ length: 20 }, () => ''),
+                datasets: [{
+                    data,
+                    borderColor: stock === 'GOOGL' ? '#ef4444' : '#4a90e2',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    pointRadius: 0,
+                    fill: true,
+                    backgroundColor: (context) => {
+                        const g = context.chart.ctx.createLinearGradient(0, 0, 0, 60);
+                        g.addColorStop(0, stock === 'GOOGL' ? 'rgba(239,68,68,0.2)' : 'rgba(74,144,226,0.2)');
+                        g.addColorStop(1, 'rgba(255,255,255,0)');
+                        return g;
+                    }
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { x: { display: false }, y: { display: false } }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
