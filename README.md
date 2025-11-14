@@ -198,4 +198,7 @@ Example:
 ![singup](https://github.com/ParthDoomra/stock/blob/e369730ed0e7a6136dc1dc0f79bb0431288d7e20/Screenshot%20(139).png)
 
 📈 Multi-line Overview
-![dashboard]()
+![Dashboard](https://github.com/ParthDoomra/stock/blob/fc36139be2623a8c9e26c33803a1a82945ed108d/Screenshot%20(147).png)
+
+📊 Portfolio Allocation
+![Allocation]()
