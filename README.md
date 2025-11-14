@@ -195,4 +195,7 @@ Example:
 ![Home page](https://github.com/ParthDoomra/stock/blob/2f64bb896e8db88bf849bab65168e18157c1b95b/Screenshot%20(138).png)
 
 🔐 Signup
+![singup](https://github.com/ParthDoomra/stock/blob/e369730ed0e7a6136dc1dc0f79bb0431288d7e20/Screenshot%20(139).png)
 
+📈 Multi-line Overview
+![dashboard]()
