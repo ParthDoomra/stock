@@ -192,4 +192,7 @@ Example:
 /live?tickers=AAPL,TSLA,GOOGL&days=30
 
 🏠 Home Page
-![Home page] (https://github.com/ParthDoomra/stock/blob/2f64bb896e8db88bf849bab65168e18157c1b95b/Screenshot%20(138).png)
+![Home page](https://github.com/ParthDoomra/stock/blob/2f64bb896e8db88bf849bab65168e18157c1b95b/Screenshot%20(138).png)
+
+🔐 Signup
+
