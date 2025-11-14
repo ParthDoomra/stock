@@ -201,4 +201,14 @@ Example:
 ![Dashboard](https://github.com/ParthDoomra/stock/blob/fc36139be2623a8c9e26c33803a1a82945ed108d/Screenshot%20(147).png)
 
 📊 Portfolio Allocation
-![Allocation]()
+![Allocation](https://github.com/ParthDoomra/stock/blob/99df8fff502c99aa5935ef669f3157f5247e64b2/Screenshot%20(148).png)
+
+👨‍💻 Author
+Parth Doomra
+Radhil Narula
+
+Passionate full-stack developer & data visualization builder.
+
+⭐ Support the Project
+
+If you like this project, please ⭐ star the repository on GitHub!
